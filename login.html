@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html ng-app="recipeBookApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book Login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #60c2a0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #5a6268;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        a {
+            color: #38335a;
+            text-decoration: none;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+
+        #recipe {
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body ng-controller="LoginController">
+    <div class="login-container">
+        <h1 id="recipe">Recipe Book</h1>
+        <h2>Login</h2>
+        <form name="loginForm" ng-submit="login()" novalidate>
+            <label for="email">Email</label>
+            <input type="email" ng-model="user.email" name="email" required />
+            <div class="error" ng-show="loginForm.email.$touched && loginForm.email.$invalid">
+                <span ng-show="loginForm.email.$error.required">Email is required.</span>
+                <span ng-show="loginForm.email.$error.email">Invalid email format. Please enter a valid email.</span>
+            </div>
+
+            <label for="password">Password</label>
+            <input type="password" ng-model="user.password" name="password" required />
+            <div class="error" ng-show="loginForm.password.$touched && loginForm.password.$invalid">
+                Password is required.
+            </div>
+
+            <div class="error" ng-show="loginError">
+                Invalid email or password. Please try again.
+            </div>
+
+            <button type="submit" ng-disabled="loginForm.$invalid">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+
+    <script>
+        var app = angular.module('recipeBookApp', []);
+
+        app.controller('LoginController', function ($scope, $http, $window) {
+            $scope.user = {
+                email: '',
+                password: ''
+            };
+
+            $scope.loginError = false; // Error flag for invalid login
+
+            $scope.login = function () {
+                if ($scope.loginForm.$valid) {
+                    // Send login request to the server
+                    $http.post('http://localhost:7025/api/login', $scope.user)
+                        .then(function (response) {
+                            // If login is successful, redirect to index.html
+                            $window.location.href = 'index.html';
+                        })
+                        .catch(function (error) {
+                            // If login fails, show an error message
+                            $scope.loginError = true;
+                        });
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

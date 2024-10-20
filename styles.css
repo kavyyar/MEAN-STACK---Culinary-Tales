@@ -1,0 +1,375 @@
+/* Basic CSS similar to the website layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #ffffff;
+    padding: 0.01px;
+  }  
+  
+  
+  .rectangle-section {
+      background-color: #60c2a0; 
+      height: 40px;             
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;            
+      
+    }
+    
+    .rectangle-content {
+      text-align: center;
+    }
+    #head {
+      font-size: 18px;
+      color: #ffffff;
+    }
+    
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar li {
+    display: inline;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: rgb(86, 155, 159);
+    font-weight: bold;
+    font-size: 22px;
+  }
+  
+  .actions input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-btn, .register-btn {
+    background-color: #60c2a0;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  input.error {
+    border: 2px solid red;
+  }
+  
+  input.success {
+    border: 2px solid green;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }
+  
+  
+  .hero-section {
+    position: relative;
+    text-align: center;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .overlay-text h2 {
+    margin: 0;
+  }
+  
+  .overlay-text p {
+    margin-top: 5px;
+    font-size: 18px;
+  }
+  h1{
+      color:#3c6e71;
+  }
+  /* Helpful Tips & Advice section */
+.helpful-tips-section {
+  margin: 40px 0;
+  padding: 20px;
+}
+
+.helpful-tips-section h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tips-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.tip-item {
+  width: 23%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.tip-item img {
+  width: 100%;
+  height: auto;
+}
+
+.tip-item p {
+  padding: 10px;
+  font-size: 16px;
+}
+/* Subscription Section */
+.subscription-section {
+  background-color: #83c4a3;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.subscription-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.subscription-container h2 {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.subscription-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subscription-box input[type="email"] {
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  width: 300px;
+  margin-right: 10px;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+}
+
+.subscribe-btn {
+  padding: 15px 30px;
+  background-color: #2c9b76;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.subscribe-btn:hover {
+  background-color: #249e6e;
+}
+/* Footer Section */
+.footer-section {
+  background-color: #83c4a3;
+  padding: 40px 0;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left, .footer-right {
+  width: 48%;
+}
+
+.footer-left h2 span, 
+.footer-right h2 span,
+.footer-right h3 span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.footer-left p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.footer-left a {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-right h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.subscribe-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.subscribe-container input[type="email"] {
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  width: 250px;
+  margin-right: 10px;
+}
+
+.subscribe-container .subscribe-btn {
+  padding: 10px 20px;
+  background-color: #2c9b76;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+.subscribe-container .subscribe-btn:hover {
+  background-color: #249e6e;
+}
+
+.social-icons a {
+  margin-right: 10px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-bottom {
+  text-align: center;
+  background-color: #72af91;
+  padding: 20px;
+}
+
+.footer-bottom nav ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.footer-bottom nav ul li {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.footer-bottom nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-bottom p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+/* Section Styles */
+.recipe-gallery-section {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Recipe Gallery Styles */
+.recipe-gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Individual Recipe Card */
+.recipe-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 23%;
+  transition: transform 0.3s ease;
+}
+
+.recipe-item:hover {
+  transform: translateY(-5px);
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+}
+
+.recipe-details {
+  padding: 10px;
+  text-align: center;
+}
+
+.recipe-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.recipe-rating {
+  font-size: 1rem;
+  color: #f39c12;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .recipe-item {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .recipe-item {
+    width: 100%;
+  }
+}
+
+  
+  

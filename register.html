@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html ng-app="recipeBookApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book Register</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register-container {
+            background: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #60c2a0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #5a6268;
+        }
+        p {
+            text-align: center;
+            margin-top: 15px;
+        }
+        a {
+            color: #38335a;
+            text-decoration: none;
+        }
+        a {
+            text-decoration: underline;
+        }
+        #recipe {
+            text-align: center;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body ng-controller="RegisterController">
+    <div class="register-container">
+        <h1 id="recipe">Recipe Book</h1>
+        <h2>Register</h2>
+        <form name="registerForm" ng-submit="register()" novalidate>
+            <label for="name">Name</label>
+            <input type="text" ng-model="user.name" name="name" required />
+            <div class="error" ng-show="registerForm.name.$touched && registerForm.name.$invalid">
+                Name is required.
+            </div>
+            <label for="email">Email</label>
+            <input type="email" ng-model="user.email" name="email" required />
+            <div class="error" ng-show="registerForm.email.$touched && registerForm.email.$invalid">
+                <span ng-show="registerForm.email.$error.required">Email is required.</span>
+                <span ng-show="registerForm.email.$error.email">Invalid email format.</span>
+            </div>
+            <label for="phone">Phone Number</label>
+            <input type="tel" ng-model="user.phone" name="phone" pattern="[0-9]{10}" required />
+            <div class="error" ng-show="registerForm.phone.$touched && registerForm.phone.$invalid">
+                <span ng-show="registerForm.phone.$error.required">Phone number is required.</span>
+                <span ng-show="registerForm.phone.$error.pattern">Phone number should be 10 digits.</span>
+            </div>
+            <label for="password">Password</label>
+            <input type="password" ng-model="user.password" name="password" required />
+            <div class="error" ng-show="registerForm.password.$touched && registerForm.password.$invalid">
+                Password is required.
+            </div>
+            <label for="cuisine">Favorite Cuisine</label>
+            <input type="text" ng-model="user.cuisine" name="cuisine" placeholder="e.g., Italian, Indian" />
+            <label for="experience">Experience Level</label>
+            <select ng-model="user.experience" name="experience">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Expert">Expert</option>
+            </select>
+            <button type="submit" ng-disabled="registerForm.$invalid">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+    <script>
+        var app = angular.module('recipeBookApp', []);
+        app.controller('RegisterController', function ($scope, $http, $window) {
+            $scope.user = {
+                name: '',
+                email: '',
+                phone: '',
+                password: '',
+                cuisine: '',
+                experience: ''
+            };
+
+            $scope.register = function () {
+                if ($scope.registerForm.$valid) {
+                    // Send the registration data to the backend
+                    $http.post('http://localhost:7025/api/register', $scope.user)
+                        .then(function (response) {
+                            alert(response.data); // Display success message
+                            $window.location.href = 'login.html'; // Redirect to login page
+                        })
+                        .catch(function (error) {
+                            console.error("Registration Error: ", error); // Log detailed error
+                            alert("Error: " + (error.data || 'An error occurred.')); // Display error message
+                        });
+                }
+            };
+        });
+    </script>
+</body>
+</html>

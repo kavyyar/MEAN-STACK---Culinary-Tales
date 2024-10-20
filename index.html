@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myFoodApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Culinary Tales</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="MainController">
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <h1>Culinary Tales</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Recipes</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Tips</a></li>
+          <li><a href="#">Recipe Partners</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <input type="text" placeholder="Find a recipe..." ng-model="searchQuery" />
+        <button class="login-btn" ng-click="navigateTo('login')">Log In</button>
+        <button class="register-btn" ng-click="navigateTo('register')">Register</button>
+      </div>      
+    </div>
+  </header>
+  <main>
+    <section class="rectangle-section">
+      <div class="rectangle-content">
+        <p id="head">Easy Dinner Ideas | Wonderful Scone Recipes</p>
+      </div>
+    </section>
+    <section class="hero-section">
+      <img src="dish.jpg" alt="Delicious Dish" class="hero-image">
+      <section class="recipe-categories-section">
+        <h1 id="black">Browse Recipe Categories</h1>
+        <div class="carousel">
+          <div class="carousel-item" ng-click="navigateTo('breakfast')">
+            <img src="breakfast.jpg" alt="Breakfast">
+            <p>Breakfast</p>
+          </div>
+          <div class="carousel-item" ng-click="navigateTo('lunch')">
+            <img src="lunch.jpg" alt="Lunch">
+            <p>Lunch</p>
+          </div>
+          <div class="carousel-item" ng-click="navigateTo('dinner')">
+            <img src="dinner.jpg" alt="Dinner">
+            <p>Dinner</p>
+          </div>
+          <div class="carousel-item" ng-click="navigateTo('pastries')">
+            <img src="past.jpg" alt="Pastries">
+            <p>Pastries</p>
+          </div>
+          <div class="carousel-item" ng-click="navigateTo('starters')">
+            <img src="pan.jpg" alt="Starters">
+            <p>Starters</p>
+          </div>
+        </div>
+      </section>        
+      <section class="helpful-tips-section">
+        <h1 id="black">Helpful Tips & Advice</h1>
+        <div class="tips-container">
+          <div class="tip-item">
+            <img src="passionfruit.jpg" alt="Passionfruit Icing">
+            <p>Passionfruit icing for vanilla slice, cakes, and more</p>
+          </div>
+          <div class="tip-item">
+            <img src="cheese.jpg" alt="Best Cheese">
+            <p>What is the best cheese to use for cooking?</p>
+          </div>
+          <div class="tip-item">
+            <img src="green-curry.jpg" alt="Green Curry Sauce">
+            <p>Three easy meals using Thai Green Curry Sauce</p>
+          </div>
+          <div class="tip-item">
+            <img src="pasta-bake.jpg" alt="Pasta Bake">
+            <p>What to serve with pasta bake</p>
+          </div>
+        </div>
+      </section>
+      <section class="subscription-section">
+        <div class="subscription-container">
+          <h2>Join more than 500,000 happy home cooks for new recipes, videos, and more!</h2>
+          <form name="subscriptionForm" novalidate>
+            <div class="subscription-box">
+              <input type="email" 
+                     placeholder="email address" 
+                     ng-model="userEmail" 
+                     name="email" 
+                     required 
+                     ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" 
+                     ng-class="{'error': subscriptionForm.email.$invalid && subscriptionForm.email.$touched, 'success': subscriptionForm.email.$valid}">
+              <button class="subscribe-btn" ng-click="subscribe()" ng-disabled="subscriptionForm.email.$invalid">
+                Subscribe
+              </button>
+            </div>
+            <!-- Display error messages -->
+            <div class="error-message" ng-show="subscriptionForm.email.$touched && subscriptionForm.email.$invalid">
+              <p ng-show="subscriptionForm.email.$error.required">Email is required.</p>
+              <p ng-show="subscriptionForm.email.$error.pattern">Please enter a valid email address.</p>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section class="recipe-gallery-section">
+        <h2 class="gallery-title">Try these Mince recipes...</h2>
+        <div class="recipe-gallery">
+          <div class="recipe-item">
+            <img src="path-to-image-1.jpg" alt="Quick Beef Enchiladas" class="recipe-image">
+            <div class="recipe-details">
+              <p class="recipe-title">Quick Beef Enchiladas</p>
+              <p class="recipe-rating">★ 4.2</p>
+            </div>
+          </div>
+          
+          <div class="recipe-item">
+            <img src="path-to-image-2.jpg" alt="Lamb Rogan Josh Meatball Curry" class="recipe-image">
+            <div class="recipe-details">
+              <p class="recipe-title">Lamb Rogan Josh Meatball Curry</p>
+              <p class="recipe-rating">★ 4.5</p>
+            </div>
+          </div>
+
+          <div class="recipe-item">
+            <img src="path-to-image-3.jpg" alt="Honey And Soy Pork Mince Stir Fry With Egg" class="recipe-image">
+            <div class="recipe-details">
+              <p class="recipe-title">Honey And Soy Pork Mince Stir Fry With Egg</p>
+              <p class="recipe-rating">★ 3.6</p>
+            </div>
+          </div>
+
+          <div class="recipe-item">
+            <img src="path-to-image-4.jpg" alt="Turkey Meatball & Garlic Bread Bake" class="recipe-image">
+            <div class="recipe-details">
+              <p class="recipe-title">Authentic Mandi With Roasted Chicken</p>
+              <p class="recipe-rating">★ 4.5</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="footer-section">
+        <div class="footer-content">
+          <div class="footer-left">
+            <h2>More about <span>Culinary Tales</span></h2>
+            <p>
+              Find free, easy-to-follow recipes you can cook at home from India’s best brands. From timeless classics to modern trends, budget dinners to entertaining delights, save your favourite recipes, upload your own creations and create personalised digital cookbooks all on <span>myfoodbook</span>. 
+              <a href="#">Learn more about what makes us different from other recipe sites.</a>
+              To start your search, check out some <a href="#">easy home recipes</a> and get cooking!
+            </p>
+          </div>
+          <div class="footer-right">
+            <h2>Sign up for the latest recipes and news</h2>
+            <div class="subscribe-container">
+              <input type="email" placeholder="email address" ng-model="userEmail">
+              <button class="subscribe-btn" ng-click="subscribe()">Subscribe</button>
+            </div>
+            <h3>Follow <span>culinarytales</span></h3>
+            <div class="social-icons">
+              <a href="#"><img src="insta.jpg" alt="Instagram"></a>
+              <a href="#"><img src="pin.jpg" alt="Pinterest"></a>
+              <a href="#"><img src="you.png" alt="YouTube"></a>
+              <a href="#"><img src="face.jpg" alt="Facebook"></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <nav>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Video</a></li>
+              <li><a href="#">Recipe Partners</a></li>
+              <li><a href="#">Tips</a></li>
+            </ul>
+          </nav>
+          <p>&copy; Copyright culinarytales 2024</p>
+        </div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myFoodApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Culinary Tales</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <style>
+    /* Reset margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+}
+
+
+/* Category Information Styles */
+.category-info {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.category-info h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.category-info p {
+    font-size: 18px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.rating {
+    margin-top: 20px;
+}
+
+.stars {
+    font-size: 24px;
+    color: #ffcc00;
+}
+
+.stars span {
+    cursor: pointer;
+}
+
+.filled {
+    color: #ffcc00;
+}
+
+/* Recipes Section Styles */
+.recipes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.recipe-card {
+    width: 30%;
+    margin: 10px;
+    text-align: center;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.recipe-card h3 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+  </style>
+</head>
+<body ng-controller="MainController">
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <h1>Culinary Tales</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Recipes</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Tips</a></li>
+          <li><a href="#">Recipe Partners</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <input type="text" placeholder="Find a recipe..." ng-model="searchQuery" />
+        <button class="login-btn" ng-click="navigateTo('login')">Log In</button>
+        <button class="register-btn" ng-click="navigateTo('register')">Register</button>
+      </div>      
+    </div>
+  </header>
+  <main>
+    <section class="rectangle-section">
+      <div class="rectangle-content">
+        <p id="head">Easy Dinner Ideas | Wonderful Scone Recipes</p>
+      </div>
+    </section>
+    <section class="category-info">
+        <h2>Lunch</h2>
+        <p>Explore a variety of lunch recipes that are perfect for any day of the week. From hearty salads to savory sandwiches, find your new favorite lunch dish here.</p>
+        <div class="rating">
+          <p>Rate this Category</p>
+          <div class="stars">
+            <span class="filled">&#9733;</span>
+            <span class="filled">&#9733;</span>
+            <span class="filled">&#9733;</span>
+            <span class="filled">&#9733;</span>
+            <span>&#9733;</span>
+          </div>
+          <p>Average: 4.4 (54 votes)</p>
+        </div>
+      </section>
+      <section class="recipes">
+        <div class="recipe-card">
+          <img src="veg.jpg" alt="Caesar Salad">
+          <h3>Veg Pulav</h3>
+        </div>
+        <div class="recipe-card">
+          <img src="bis.jpg" alt="Grilled Cheese Sandwich">
+          <h3>Bismillahbath</h3>
+        </div>
+        <div class="recipe-card">
+          <img src="bri.jpg" alt="Pasta Salad">
+          <h3>Chicken Briyani</h3>
+        </div>
+        <div class="recipe-card">
+          <img src="friedrice.jpg" alt="Chicken Wrap">
+          <h3>Fried Rice</h3>
+        </div>
+        <div class="recipe-card">
+          <img src="tomato.jpg" alt="Quiche">
+          <h3>Tomato Rice</h3>
+        </div>
+        <div class="recipe-card">
+          <img src="dal.jpg" alt="Veggie Burger">
+          <h3>Dal Rice</h3>
+        </div>
+      </section>
+      
+    <footer class="footer-section">
+        <div class="footer-content">
+          <div class="footer-left">
+            <h2>More about <span>Culinary Tales</span></h2>
+            <p>
+              Find free, easy-to-follow recipes you can cook at home from India’s best brands. From timeless classics to modern trends, budget dinners to entertaining delights, save your favourite recipes, upload your own creations and create personalised digital cookbooks all on <span>myfoodbook</span>. 
+              <a href="#">Learn more about what makes us different from other recipe sites.</a>
+              To start your search, check out some <a href="#">easy home recipes</a> and get cooking!
+            </p>
+          </div>
+          <div class="footer-right">
+            <h2>Sign up for the latest recipes and news</h2>
+            <div class="subscribe-container">
+              <input type="email" placeholder="email address" ng-model="userEmail">
+              <button class="subscribe-btn" ng-click="subscribe()">Subscribe</button>
+            </div>
+            <h3>Follow <span>culinarytales</span></h3>
+            <div class="social-icons">
+              <a href="#"><img src="insta.jpg" alt="Instagram"></a>
+              <a href="#"><img src="pin.jpg" alt="Pinterest"></a>
+              <a href="#"><img src="you.png" alt="YouTube"></a>
+              <a href="#"><img src="face.jpg" alt="Facebook"></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <nav>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Video</a></li>
+              <li><a href="#">Recipe Partners</a></li>
+              <li><a href="#">Tips</a></li>
+            </ul>
+          </nav>
+          <p>&copy; Copyright culinarytales 2024</p>
+        </div>
+      </footer>
+    </section>
+  </main>
+  </body>
+  </html>
